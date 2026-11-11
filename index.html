@@ -123,7 +123,7 @@ html.tolto-ki .tolto .also,html.tolto-ki .tolto .szaz{transition:opacity .5s var
 
 /* ============ hős: a kertkapu a falban; a boltív kitágul, kinyílik az ajtó, belépünk a fénybe ============ */
 .hos{position:relative;height:420svh}
-.szinpad{position:sticky;top:0;height:100svh;overflow:hidden;background:#2A2438}
+.szinpad{position:sticky;top:0;height:100vh;height:100lvh;overflow:hidden;background:#2A2438}
 .fal{position:absolute;inset:0;background:#2A2438}   /* verzio3: a videó mögött sötét, ne villanjon világos keret, amíg az első kocka kirajzolódik */
 .fal::after{content:none}
 .ablak{position:absolute;inset:0;z-index:1}
@@ -154,7 +154,7 @@ html.megerkezett .kopgy i:nth-child(2){animation-delay:.28s}html.megerkezett .ko
 .hos-cim .nc em{color:var(--rozsa-ej)}
 .hos-cim .nc{line-height:1.04}
 .aradas{position:absolute;inset:0;pointer-events:none;z-index:5;opacity:0}   /* verzio3: a sötét a kép szélei felől zárul be (JS: radiális maszk a rés körül) */
-.hos-also{position:absolute;left:var(--pad);right:var(--pad);bottom:clamp(30px,5.5svh,58px);display:flex;justify-content:space-between;align-items:flex-end;gap:40px;z-index:4;pointer-events:none}
+.hos-also{position:absolute;left:var(--pad);right:var(--pad);bottom:clamp(30px,5.5svh,58px);bottom:calc(100lvh - 100svh + clamp(30px,5.5svh,58px));display:flex;justify-content:space-between;align-items:flex-end;gap:40px;z-index:4;pointer-events:none}
 .hos-also>*{pointer-events:auto}
 .hos-also p{max-width:27em;font-size:16.5px;line-height:1.65;color:var(--hold2)}
 /* forgó CTA: két arany hajszálkör között lassan forgó felirat (Marcellus), középen egy szilva nyíl.
@@ -269,9 +269,9 @@ html.megerkezett .kopgy i:nth-child(2){animation-delay:.28s}html.megerkezett .ko
 
 /* három koppanás a kút csendes vizén */
 .kopog{position:relative;height:330svh}
-.kopog .sz{position:sticky;top:0;height:100svh;overflow:hidden;background:var(--ej) radial-gradient(90% 70% at 50% 46%,#3B3453,var(--ej) 70%)}
+.kopog .sz{position:sticky;top:0;height:100vh;height:100lvh;overflow:hidden;background:var(--ej) radial-gradient(90% 70% at 50% 46%,#3B3453,var(--ej) 70%)}
 .kopog canvas{position:absolute;inset:0;width:100%;height:100%}
-.kopog .sorok{position:absolute;left:var(--pad);bottom:clamp(70px,12svh,120px);z-index:2}
+.kopog .sorok{position:absolute;left:var(--pad);bottom:clamp(70px,12svh,120px);bottom:calc(100lvh - 100svh + clamp(70px,12svh,120px));z-index:2}
 .kopog .sorok p{font:400 clamp(21px,1.8vw,30px)/1.5 var(--cim);color:var(--hold2);opacity:0}
 .kopog .vegso{position:absolute;inset:0;display:grid;place-items:center;z-index:2;text-align:center}
 .kopog .vegso .nc{--fs:clamp(56px,7.6vw,136px);color:var(--hold)}
@@ -371,7 +371,7 @@ html.ej-fej .fej nav a:hover,html.ej-fej .fej nav a.itt{color:var(--hold)}
 
 /* ============ verzio3: a második kis ajtó a hajnalra nyílik, és a fény átvezet a Rólamba ============ */
 .hajnal{position:relative;height:340svh}
-.hajnal .sz{position:sticky;top:0;height:100svh;overflow:hidden;background:var(--ej)}
+.hajnal .sz{position:sticky;top:0;height:100vh;height:100lvh;overflow:hidden;background:var(--ej)}
 .h-feny{position:absolute;left:50%;border-radius:50%;pointer-events:none;background:radial-gradient(closest-side,rgba(242,200,176,.13),rgba(242,200,176,.04) 55%,rgba(242,200,176,0));transform:translate(-50%,-50%)}
 .h-ajto{position:absolute;inset:0}
 .h-ajto img{width:100%;height:100%;object-fit:cover;will-change:transform}
@@ -397,7 +397,7 @@ html.belep .keret-vonal path{animation:huz 1.8s var(--gorbe) .1s both}
 @keyframes huz{from{stroke-dasharray:1 1;stroke-dashoffset:1}to{stroke-dasharray:1 1;stroke-dashoffset:0}}
 html.megerkezett .fej,html.megerkezett .hos-also>*,html.megerkezett .hos-cim .sor>span{animation:none;opacity:1}
 
-html.js [data-r]{will-change:transform,opacity}
+/* a feltűnő elemek csak mozgás közben kapnak saját réteget (JS: will-change), nem állandóan */
 /* Safari: a ragadós boltívek (jel-kep, igy-kep) transform-rétegként görgetéskor remegnek; a halványodóknak elég az átlátszóság */
 html.js [data-r="halv"]{will-change:opacity}
 
@@ -467,7 +467,7 @@ html.valt body::after{content:"";position:fixed;inset:0;z-index:999;background:#
   .szek{padding:clamp(84px,12svh,120px) var(--pad)}
   /* hős: a cím fent, a kis ajtó középen, a bemutatkozás és a gomb lent; az árnyék fent és lent sötétít */
   .hos-arnyek{background:linear-gradient(180deg,rgba(42,36,56,.74) 0%,rgba(42,36,56,.3) 30%,rgba(42,36,56,0) 46%),linear-gradient(0deg,rgba(42,36,56,.8) 0%,rgba(42,36,56,.35) 22%,rgba(42,36,56,0) 36%)}
-  .hos-also{gap:18px;bottom:max(22px,3.6svh)}
+  .hos-also{gap:18px;bottom:calc(100lvh - 100svh + max(22px,3.6svh))}
   .hos-also p{font-size:14.5px;line-height:1.55;max-width:none}
   .forgo{width:108px;height:108px}
   .forgo .bel,.forgo .hull{inset:28px}
@@ -485,11 +485,10 @@ html.valt body::after{content:"";position:fixed;inset:0;z-index:999;background:#
   .jelek{margin-top:80px;gap:0}
   .jel-kep{display:none}
   .jel{display:block;position:relative;min-height:0;height:210svh;padding:0;border:0!important;margin:0 calc(var(--pad) * -1)}
-  .jel-szin{position:sticky;top:0;height:100svh;overflow:hidden;background:var(--ej2)}
+  .jel-szin{position:sticky;top:0;height:100vh;height:100lvh;overflow:hidden;background:var(--ej2)}
   .jel-szin img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-  .jel-szin .elmos{filter:blur(18px) saturate(1.1);transform:scale(1.12);opacity:0}
-  .jel-szin .sotet{position:absolute;inset:0;opacity:0;background:linear-gradient(180deg,rgba(34,29,48,.46) 0%,rgba(34,29,48,.66) 50%,rgba(34,29,48,.84) 100%)}
-  .jel-szin>div{position:absolute;left:var(--pad);right:var(--pad);bottom:max(11svh,78px);opacity:0;will-change:transform,opacity}
+  .jel-szin .elmos{opacity:0}
+  .jel-szin>div{position:absolute;left:var(--pad);right:var(--pad);bottom:calc(100lvh - 100svh + max(11svh,78px));opacity:0;will-change:transform,opacity}
   .jel p{font-size:clamp(25px,7vw,34px);max-width:none}
   .jel p.jel-idezet{font-size:clamp(17px,4.6vw,20px)}
   .kapu-sz{margin-top:110px}
@@ -666,7 +665,7 @@ html.valt body::after{content:"";position:fixed;inset:0;z-index:999;background:#
     <div>
       <p class="lead" data-r="fel">Az Alice Csodaországban története számomra sokkal több egy különös mesénél. Szimbolikus utazás az ismeretlenbe, önmagunk mélyebb megismerése és a látható világon túli lehetőségek felfedezése felé.</p>
       <!-- 16-zsebora -->
-      <figure class="lt-ora" data-r="fel" data-k=".08"><div class="ivvonal"><div class="iv"><div class="hely itt"><img src="assets/kepek/zsebora.webp?v=1794395215" alt="Nyitott ezüst zsebóra a harmatos fűben, hajnal előtt" loading="lazy" decoding="async"></div></div></div></figure>
+      <figure class="lt-ora" data-r="fel" data-k=".08"><div class="ivvonal"><div class="iv"><div class="hely itt"><img src="assets/kepek/zsebora.webp?v=1794399105" alt="Nyitott ezüst zsebóra a harmatos fűben, hajnal előtt" loading="lazy" decoding="async"></div></div></div></figure>
     </div>
     <div>
       <p class="p" data-r="fel" data-k=".04">Alice egy fehér nyulat követve lép át egy olyan világba, ahol a megszokott szabályok már nem érvényesek. Ahol az idő másként telik, a lehetetlen lehetségessé válik, és minden találkozás, minden útelágazás új kérdéseket vet fel.</p>
@@ -678,10 +677,10 @@ html.valt body::after{content:"";position:fixed;inset:0;z-index:999;background:#
   <div class="jelek">
     <div class="jel-kep"><div class="ivvonal"><div class="iv">
       <!-- Adam képei, 4:5-re vágva: 12-nyul, 13-kulcs, 14-tukor, 15-elagazas -->
-      <div class="hely itt"><img src="assets/kepek/nyul.webp?v=1794395215" alt="Fehér nyúl ül a holdfényben, páfrányok és vadrózsák között" decoding="async"></div>
-      <div class="hely"><img src="assets/kepek/kulcs.webp?v=1794395215" alt="Régi rézkulcs a mohán, rózsaszirmok és fakó rózsaszín szalag között" decoding="async"></div>
-      <div class="hely"><img src="assets/kepek/tukor.webp?v=1794395215" alt="Aranykeretes ovális tükör a sötét kertben: hajnali, levendulás kertet tükröz, ami nincs ott" decoding="async"></div>
-      <div class="hely"><img src="assets/kepek/elagazas.webp?v=1794395215" alt="Útelágazás a ködös, holdfényes erdőben, felirat nélküli régi fa útjelzővel" decoding="async"></div>
+      <div class="hely itt"><img src="assets/kepek/nyul.webp?v=1794399105" alt="Fehér nyúl ül a holdfényben, páfrányok és vadrózsák között" decoding="async"></div>
+      <div class="hely"><img src="assets/kepek/kulcs.webp?v=1794399105" alt="Régi rézkulcs a mohán, rózsaszirmok és fakó rózsaszín szalag között" decoding="async"></div>
+      <div class="hely"><img src="assets/kepek/tukor.webp?v=1794399105" alt="Aranykeretes ovális tükör a sötét kertben: hajnali, levendulás kertet tükröz, ami nincs ott" decoding="async"></div>
+      <div class="hely"><img src="assets/kepek/elagazas.webp?v=1794399105" alt="Útelágazás a ködös, holdfényes erdőben, felirat nélküli régi fa útjelzővel" decoding="async"></div>
     </div></div></div>
     <div class="jel-lista">
       <article class="jel itt" data-r="fel"><div><small><b>I.</b>A fehér nyúl</small><p>A fehér nyúl lehet a <em>megérzésünk,</em> amely arra ösztönöz, hogy elinduljunk egy ismeretlen úton.</p></div></article>
@@ -708,7 +707,7 @@ html.valt body::after{content:"";position:fixed;inset:0;z-index:999;background:#
   <div class="sz">
     <div class="h-feny"></div>
     <!-- 17-hajnal-ajto: belülről a nyitott kis ajtón át a hajnali kertre -->
-    <div class="h-ajto"><img src="assets/kepek/hajnal.webp?v=1794395215" alt="A nyitott kis ajtón túl hajnali kert: rózsák, levendula, reggeli pára és a felkelő nap" loading="lazy" decoding="async"></div>
+    <div class="h-ajto"><img src="assets/kepek/hajnal.webp?v=1794399105" alt="A nyitott kis ajtón túl hajnali kert: rózsák, levendula, reggeli pára és a felkelő nap" loading="lazy" decoding="async"></div>
     <svg class="h-vonal" aria-hidden="true"><path/></svg>
     <div class="h-kerdes"><p class="nc"><span class="sor"><span>És hogy mi van</span></span><span class="sor"><span>az ajtó <em>túloldalán?</em></span></span></p></div>
     <div class="h-krem"></div>
@@ -722,7 +721,7 @@ html.valt body::after{content:"";position:fixed;inset:0;z-index:999;background:#
   <div class="rolam">
     <figure class="portre kulcs" data-r="fel">
       <!-- Andi portréja a kulcslyukban: _forras/tools/kepek4.py vágja ki a fotóból (nyers/20-andi-kulcslyuk.webp) -->
-      <div class="kl"><img src="assets/kepek/andi.webp?v=1794395215" width="572" height="1229" alt="Belső-Gál Andrea egy kulcslyukon át néz, ajkához egy régi rézkulcsot emel" loading="lazy" decoding="async"><svg class="kl-vonal" viewBox="0 0 572 1229" aria-hidden="true"><path d="M27.0 1223.0L114.0 506.9L105.0 499.6L96.3 492.0L88.0 484.0L80.0 475.6L72.3 466.9L65.0 458.0L58.1 448.7L51.6 439.1L45.5 429.3L39.7 419.2L34.4 409.0L29.6 398.5L25.1 387.8L21.2 376.9L17.6 365.9L14.6 354.7L12.0 343.4L9.8 332.1L8.1 320.6L7.0 309.1L6.2 297.6L6.0 286.0L6.2 274.4L7.0 262.9L8.2 251.4L9.8 239.9L12.0 228.5L14.6 217.3L17.6 206.1L21.2 195.1L25.2 184.2L29.6 173.5L34.5 163.0L39.8 152.7L45.5 142.7L51.6 132.8L58.1 123.3L65.0 114.0L72.3 105.0L80.0 96.4L88.0 88.0L96.4 80.0L105.0 72.3L114.0 65.0L123.3 58.1L132.9 51.6L142.7 45.5L152.7 39.7L163.0 34.4L173.5 29.6L184.2 25.2L195.1 21.2L206.1 17.6L217.3 14.6L228.5 12.0L239.9 9.8L251.4 8.2L262.9 7.0L274.4 6.2L286.0 6.0L297.6 6.2L309.1 7.0L320.6 8.2L332.1 9.8L343.5 12.0L354.7 14.6L365.9 17.6L376.9 21.2L387.8 25.2L398.5 29.6L409.0 34.4L419.3 39.7L429.3 45.5L439.1 51.6L448.7 58.1L458.0 65.0L467.0 72.3L475.6 80.0L484.0 88.0L492.0 96.4L499.7 105.0L507.0 114.0L513.9 123.3L520.4 132.8L526.5 142.7L532.2 152.7L537.5 163.0L542.4 173.5L546.8 184.2L550.8 195.1L554.4 206.1L557.4 217.3L560.0 228.5L562.2 239.9L563.8 251.4L565.0 262.9L565.8 274.4L566.0 286.0L565.8 297.6L565.0 309.1L563.9 320.6L562.2 332.1L560.0 343.4L557.4 354.7L554.4 365.9L550.8 376.9L546.9 387.8L542.4 398.5L537.6 409.0L532.3 419.2L526.5 429.3L520.4 439.1L513.9 448.7L507.0 458.0L499.7 466.9L492.0 475.6L484.0 484.0L475.7 492.0L467.0 499.6L458.0 506.9L545.0 1223.0Z"/></svg></div>
+      <div class="kl"><img src="assets/kepek/andi.webp?v=1794399105" width="572" height="1229" alt="Belső-Gál Andrea egy kulcslyukon át néz, ajkához egy régi rézkulcsot emel" loading="lazy" decoding="async"><svg class="kl-vonal" viewBox="0 0 572 1229" aria-hidden="true"><path d="M27.0 1223.0L114.0 506.9L105.0 499.6L96.3 492.0L88.0 484.0L80.0 475.6L72.3 466.9L65.0 458.0L58.1 448.7L51.6 439.1L45.5 429.3L39.7 419.2L34.4 409.0L29.6 398.5L25.1 387.8L21.2 376.9L17.6 365.9L14.6 354.7L12.0 343.4L9.8 332.1L8.1 320.6L7.0 309.1L6.2 297.6L6.0 286.0L6.2 274.4L7.0 262.9L8.2 251.4L9.8 239.9L12.0 228.5L14.6 217.3L17.6 206.1L21.2 195.1L25.2 184.2L29.6 173.5L34.5 163.0L39.8 152.7L45.5 142.7L51.6 132.8L58.1 123.3L65.0 114.0L72.3 105.0L80.0 96.4L88.0 88.0L96.4 80.0L105.0 72.3L114.0 65.0L123.3 58.1L132.9 51.6L142.7 45.5L152.7 39.7L163.0 34.4L173.5 29.6L184.2 25.2L195.1 21.2L206.1 17.6L217.3 14.6L228.5 12.0L239.9 9.8L251.4 8.2L262.9 7.0L274.4 6.2L286.0 6.0L297.6 6.2L309.1 7.0L320.6 8.2L332.1 9.8L343.5 12.0L354.7 14.6L365.9 17.6L376.9 21.2L387.8 25.2L398.5 29.6L409.0 34.4L419.3 39.7L429.3 45.5L439.1 51.6L448.7 58.1L458.0 65.0L467.0 72.3L475.6 80.0L484.0 88.0L492.0 96.4L499.7 105.0L507.0 114.0L513.9 123.3L520.4 132.8L526.5 142.7L532.2 152.7L537.5 163.0L542.4 173.5L546.8 184.2L550.8 195.1L554.4 206.1L557.4 217.3L560.0 228.5L562.2 239.9L563.8 251.4L565.0 262.9L565.8 274.4L566.0 286.0L565.8 297.6L565.0 309.1L563.9 320.6L562.2 332.1L560.0 343.4L557.4 354.7L554.4 365.9L550.8 376.9L546.9 387.8L542.4 398.5L537.6 409.0L532.3 419.2L526.5 429.3L520.4 439.1L513.9 448.7L507.0 458.0L499.7 466.9L492.0 475.6L484.0 484.0L475.7 492.0L467.0 499.6L458.0 506.9L545.0 1223.0Z"/></svg></div>
       <figcaption><span>Belső-Gál Andrea</span><span>médium</span></figcaption>
     </figure>
     <div class="rolam-sz">
@@ -764,7 +763,7 @@ html.valt body::after{content:"";position:fixed;inset:0;z-index:999;background:#
 <!-- ========== ÍGY DOLGOZOM ========== -->
 <section class="szek" id="igy">
   <div class="igy">
-    <div class="igy-kep" data-r="halv"><div class="ivvonal"><div class="iv"><img src="assets/kepek/kartyak.webp?v=1794395215" alt="Tarot-kártyák egy régi fa asztalon a kertben: gyertya, cilinder, zsebóra, egy csésze tea és egy üvegcse" data-parallax=".05" decoding="async"></div></div></div>
+    <div class="igy-kep" data-r="halv"><div class="ivvonal"><div class="iv"><img src="assets/kepek/kartyak.webp?v=1794399105" alt="Tarot-kártyák egy régi fa asztalon a kertben: gyertya, cilinder, zsebóra, egy csésze tea és egy üvegcse" data-parallax=".05" decoding="async"></div></div></div>
     <div class="igy-sz">
       <span class="cimke" data-r="halv">Így dolgozom</span>
       <h2 class="nc"><span class="sor"><span data-r="maszk">Nincsenek</span></span><span class="sor"><span data-r="maszk" data-k=".04"><em>merev sémák.</em></span></span></h2>
@@ -819,7 +818,7 @@ html.valt body::after{content:"";position:fixed;inset:0;z-index:999;background:#
 <!-- ========== AKIK ELŐBB ÉRKEZNEK ========== -->
 <section class="szek ej elhunyt" id="elhunyt" data-ej>
   <div class="elhunyt-kep">
-    <img src="assets/kepek/toll.webp?v=1794395215" alt="Egy kis fehér toll lebeg a hajnal előtti kék órában, harmatos rózsák és levendula között" loading="lazy" decoding="async" data-parallax=".08">
+    <img src="assets/kepek/toll.webp?v=1794399105" alt="Egy kis fehér toll lebeg a hajnal előtti kék órában, harmatos rózsák és levendula között" loading="lazy" decoding="async" data-parallax=".08">
     <h2 class="nc"><span class="sor"><span data-r="maszk">Akik előbb</span></span><span class="sor"><span data-r="maszk" data-k=".04"><em>érkeznek.</em></span></span></h2>
   </div>
   <div class="elhunyt-racs">
@@ -993,10 +992,11 @@ function kockaRajz(m) {
 }
 /* ---------- simított görgetés ---------- */
 let SMY = scrollY, utolsoT = performance.now();
+const SIMITAS = matchMedia('(hover: none)').matches ? .34 : .14;
 function simit(now) {
   const t = scrollY, dt = Math.min(64, now - utolsoT); utolsoT = now;
   if (csokk || Math.abs(t - SMY) > H * 1.5) SMY = t;
-  else { SMY += (t - SMY) * (1 - Math.pow(1 - .14, dt / 16.67)); if (Math.abs(t - SMY) < .05) SMY = t; }
+  else { SMY += (t - SMY) * (1 - Math.pow(1 - SIMITAS, dt / 16.67)); if (Math.abs(t - SMY) < .05) SMY = t; }
 }
 
 /* ---------- mérések ---------- */
@@ -1038,6 +1038,7 @@ function revealFrissit() {
     else if (r.mod === 'fel') { s.transform = `translateY(${(1 - v) * 80}px)`; s.opacity = v; }
     else s.opacity = v;
     s.visibility = v <= 0 ? 'hidden' : '';
+    s.willChange = v > 0 && v < 1 ? (r.mod === 'halv' ? 'opacity' : 'transform, opacity') : 'auto';
   }
 }
 function lebegFrissit() {
@@ -1134,8 +1135,9 @@ $$('.sor-t>button').forEach(b => b.addEventListener('click', () => {
 const kopog = $('#kopog'), kv = $('.kopog-vaszon'), kSorok = $$('.kopog .sorok p'), kVegso = $$('.kopog .vegso .sor>span');
 const KP = {};
 function kopogMer() {
-  KP.t = teto(kopog); KP.fut = kopog.offsetHeight - H;
-  const dpr = DPR(), cw = Math.round(W * dpr), ch = Math.round(H * dpr);
+  KP.sh = $('.sz', kopog).offsetHeight || H;                // a színpad magassága (telefonon az eszköztár nélküli, nagyobbik)
+  KP.t = teto(kopog); KP.fut = kopog.offsetHeight - KP.sh;
+  const dpr = DPR(), cw = Math.round(W * dpr), ch = Math.round(KP.sh * dpr);
   if (kv.width !== cw || kv.height !== ch) { kv.width = cw; kv.height = ch; }
   KP.dpr = dpr; KP.v = -1;
   KP.cx = W * .5; KP.cy = H * .46; KP.rm = Math.hypot(W, H) * .62;
@@ -1145,7 +1147,7 @@ function kopogFrissit() {
   if (SMY < KP.t - H || SMY > KP.t + KP.fut + H) return;
   const v = Math.round(kl((SMY - KP.t) / KP.fut) * 3000) / 3000; if (v === KP.v) return; KP.v = v;
   const c = kv.getContext('2d'), dpr = KP.dpr;
-  c.setTransform(dpr, 0, 0, dpr, 0, 0); c.clearRect(0, 0, W, H);
+  c.setTransform(dpr, 0, 0, dpr, 0, 0); c.clearRect(0, 0, W, KP.sh);
   KOPP.forEach(pk => {
     // egy csepp hull a vízre…
     const es = kl((v - (pk - .07)) / .07);
@@ -1186,21 +1188,24 @@ const JM = [];
 if (innerWidth < 900) jelLista.forEach((e, i) => {
   const im = jelHely[i] && jelHely[i].querySelector('img'); if (!im) return;
   const szoveg = e.firstElementChild, szin = d.createElement('div'); szin.className = 'jel-szin';
-  const kep = im.cloneNode(), elmos = im.cloneNode(), sotet = d.createElement('i');
-  elmos.className = 'elmos'; elmos.alt = ''; elmos.setAttribute('aria-hidden', 'true'); sotet.className = 'sotet';
-  szin.append(kep, elmos, sotet, szoveg); e.appendChild(szin);
+  // az elmosott, sötétített mása előre elkészített kis kép (_forras/tools/kepek4.py): a futás közbeni CSS-blur az iPhone-on
+  // minden görgetési kockánál újraszámolódott, és akadt tőle a görgetés
+  const kep = im.cloneNode(), elmos = d.createElement('img');
+  elmos.className = 'elmos'; elmos.alt = ''; elmos.setAttribute('aria-hidden', 'true'); elmos.decoding = 'async';
+  elmos.src = im.getAttribute('src').replace('.webp', '-mos.webp');
+  szin.append(kep, elmos, szoveg); e.appendChild(szin);
   // a jelenet maga tűnteti fel a szövegét: a cikk ne kapjon görgetéses feltűnést (az a ragadós színpadot is mozgatná)
   e.removeAttribute('data-r'); e.style.transform = ''; e.style.opacity = '';
   const ri = reveal.findIndex(r => r.el === e); if (ri >= 0) reveal.splice(ri, 1);
-  JM.push({ e, elmos, sotet, szoveg, t: 0, fut: 1, v: -1 });
+  JM.push({ e, elmos, szoveg, t: 0, fut: 1, v: -1 });
 });
-function jelMobMer() { JM.forEach(j => { j.t = teto(j.e); j.fut = Math.max(1, j.e.offsetHeight - H); j.v = -1; }); }
+function jelMobMer() { JM.forEach(j => { j.t = teto(j.e); j.fut = Math.max(1, j.e.offsetHeight - (j.e.firstElementChild ? j.e.lastElementChild.offsetHeight : H)); j.v = -1; }); }
 function jelMobFrissit() {
   for (const j of JM) {
     if (SMY < j.t - H || SMY > j.t + j.fut + H) continue;
     const p = Math.round(kl((SMY - j.t) / j.fut) * 1000) / 1000; if (p === j.v) continue; j.v = p;
     const b = ss(.1, .42, p), q = sss(.3, .62, p);
-    j.elmos.style.opacity = b.toFixed(3); j.sotet.style.opacity = b.toFixed(3);
+    j.elmos.style.opacity = b.toFixed(3);
     j.szoveg.style.opacity = q.toFixed(3); j.szoveg.style.transform = `translateY(${((1 - q) * 46).toFixed(1)}px)`;
   }
 }
@@ -1219,12 +1224,13 @@ const hajnal = $('#hajnal'), hAjto = $('.h-ajto', hajnal), hImg = $('.h-ajto img
   hFeny = $('.h-feny', hajnal), hKerdes = $('.h-kerdes', hajnal), hK = $$('.h-kerdes .sor>span', hajnal), hV = $$('.h-valasz .sor>span', hajnal), hKrem = $('.h-krem', hajnal);
 const HJ = { t: 0, fut: 1, v: -1 };
 function hajnalMer() {
-  HJ.t = teto(hajnal); HJ.fut = hajnal.offsetHeight - H; HJ.v = -1;
+  HJ.sh = $('.sz', hajnal).offsetHeight || H;
+  HJ.t = teto(hajnal); HJ.fut = hajnal.offsetHeight - HJ.sh; HJ.v = -1;
   HJ.w0 = Math.max(110, Math.min(W * .1, 168)); HJ.h0 = HJ.w0 * 1.62; HJ.cy = H * .63;
   const f = HJ.w0 * 3.4;
   Object.assign(hFeny.style, { top: HJ.cy + 'px', width: f + 'px', height: f + 'px' });
-  hKerdes.style.bottom = (H - (HJ.cy - HJ.h0 / 2) + Math.max(36, H * .06)) + 'px';
-  hImg.style.transformOrigin = `50% ${(HJ.cy / H * 100).toFixed(1)}%`;
+  hKerdes.style.bottom = (HJ.sh - (HJ.cy - HJ.h0 / 2) + Math.max(36, H * .06)) + 'px';
+  hImg.style.transformOrigin = `50% ${(HJ.cy / HJ.sh * 100).toFixed(1)}%`;
   HJ.dx = (.5 - .449) * Math.max(W, H * 1.5) * 1.32;
 }
 const maszkBe = (e, q) => { e.style.transform = `translateY(${((1 - q) * 145).toFixed(1)}%) rotate(${((1 - q) * 5).toFixed(2)}deg)`; e.style.visibility = q <= 0 ? 'hidden' : ''; };
@@ -1238,8 +1244,8 @@ function hajnalFrissit() {
   hKerdes.style.opacity = (1 - ki).toFixed(3); hKerdes.style.translate = `0 ${(-ki * 60).toFixed(1)}px`;
   // a boltív: a kis ajtóból a teljes kép
   const e = sss(.2, .64, v), w = lerp(HJ.w0, W, e);
-  const L = (W - w) / 2, R = L + w, T = lerp(HJ.cy - HJ.h0 / 2, 0, e), B = lerp(HJ.cy + HJ.h0 / 2, H, e), rad = w / 2 * (1 - e);
-  hAjto.style.clipPath = e < 1 ? `inset(${T.toFixed(1)}px ${(W - R).toFixed(1)}px ${(H - B).toFixed(1)}px ${L.toFixed(1)}px round ${rad.toFixed(1)}px ${rad.toFixed(1)}px 0 0)` : '';
+  const L = (W - w) / 2, R = L + w, T = lerp(HJ.cy - HJ.h0 / 2, 0, e), B = lerp(HJ.cy + HJ.h0 / 2, HJ.sh, e), rad = w / 2 * (1 - e);
+  hAjto.style.clipPath = e < 1 ? `inset(${T.toFixed(1)}px ${(W - R).toFixed(1)}px ${(HJ.sh - B).toFixed(1)}px ${L.toFixed(1)}px round ${rad.toFixed(1)}px ${rad.toFixed(1)}px 0 0)` : '';
   hImg.style.transform = `translateX(${((1 - e) * HJ.dx).toFixed(1)}px) scale(${lerp(1.32, 1, e).toFixed(4)})`;
   const g = 12 * (1 - e), rr = rad + g;
   hVonal.setAttribute('d', `M${(L - g).toFixed(1)} ${(B + g).toFixed(1)}L${(L - g).toFixed(1)} ${(T + rad).toFixed(1)}A${rr.toFixed(1)} ${rr.toFixed(1)} 0 0 1 ${(R + g).toFixed(1)} ${(T + rad).toFixed(1)}L${(R + g).toFixed(1)} ${(B + g).toFixed(1)}`);
@@ -1454,7 +1460,11 @@ addEventListener('keydown', e => { if ((html.classList.contains('tolt') || (html
 /* ---------- indulás ---------- */
 let atm = 0;
 const ujramer = () => { clearTimeout(atm); atm = setTimeout(() => { mer(); if (html.classList.contains('tolt')) toltoMeret(); }, 120); };
-addEventListener('resize', ujramer);
+let ujramerSz = innerWidth;
+addEventListener('resize', () => {
+  if (innerWidth === ujramerSz && matchMedia('(hover: none)').matches) return;   // érintőképernyőn csak a magasság változott: az eszköztár
+  ujramerSz = innerWidth; ujramer();
+});
 // a szinpad mérete, és az oldal magassága (betűcsere, kép, kinyíló sor): bármelyik változik, újramérünk
 const ro = new ResizeObserver(ujramer); ro.observe(szinpad); ro.observe(d.body);
 d.addEventListener('visibilitychange', () => { if (!d.hidden) ujramer(); });
