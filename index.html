@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>AnDimenzió · Belső-Gál Andrea, médium — A csodák halkan zörgetnek</title>
 <meta name="description" content="Belső-Gál Andrea, médium. Médiumi útmutatás, döntéshelyzetek tisztánlátása, a testi-lelki elakadások háttere, Tarot és Lenormand, kapcsolatfelvétel elhunyt szeretteiddel.">
-<meta name="theme-color" content="#E4DADC">
+<meta name="theme-color" content="#2A2438">
 <script>
 if (location.hash) history.replaceState(null, '', location.pathname + location.search);
 document.documentElement.classList.add('js');
@@ -122,7 +122,7 @@ html.tolt .tolto{display:block}
 html.tolto-ki .tolto .also,html.tolto-ki .tolto .szaz{transition:opacity .5s var(--sima);opacity:0}
 
 /* ============ hős: a kertkapu a falban; a boltív kitágul, kinyílik az ajtó, belépünk a fénybe ============ */
-.hos{position:relative;height:420svh}
+.hos{position:relative;height:420svh;background:#2A2438}
 .szinpad{position:sticky;top:0;height:100vh;height:100lvh;overflow:hidden;background:#2A2438}
 .fal{position:absolute;inset:0;background:#2A2438}   /* verzio3: a videó mögött sötét, ne villanjon világos keret, amíg az első kocka kirajzolódik */
 .fal::after{content:none}
@@ -183,7 +183,7 @@ html.megerkezett .kopgy i:nth-child(2){animation-delay:.28s}html.megerkezett .ko
 .idezet .ki::before{content:"";width:28px;height:1px;background:currentColor}
 
 /* ============ szekciók ============ */
-.szek{position:relative;padding:clamp(120px,17svh,190px) var(--pad);overflow-x:clip}
+.szek{position:relative;padding:clamp(120px,17svh,190px) var(--pad);overflow-x:clip;background-color:var(--krem)}   /* a világos szakaszok saját hátteret kapnak: az oldal háttere a sötét részeken sötét */
 .disz{position:absolute;pointer-events:none;z-index:1}
 .disz .cs{width:100%;height:100%}
 /* boltíves keret: félköríves teteje van, kívül egy vékony arany vonal kíséri */
@@ -268,7 +268,7 @@ html.megerkezett .kopgy i:nth-child(2){animation-delay:.28s}html.megerkezett .ko
 .sor-t .test p+p{margin-top:.9em}
 
 /* három koppanás a kút csendes vizén */
-.kopog{position:relative;height:330svh}
+.kopog{position:relative;height:330svh;background:var(--ej)}
 .kopog .sz{position:sticky;top:0;height:100vh;height:100lvh;overflow:hidden;background:var(--ej) radial-gradient(90% 70% at 50% 46%,#3B3453,var(--ej) 70%)}
 .kopog canvas{position:absolute;inset:0;width:100%;height:100%}
 .kopog .sorok{position:absolute;left:var(--pad);bottom:clamp(70px,12svh,120px);bottom:calc(100lvh - 100svh + clamp(70px,12svh,120px));z-index:2}
@@ -329,6 +329,7 @@ html.megerkezett .kopgy i:nth-child(2){animation-delay:.28s}html.megerkezett .ko
 /* a fejléc a sötét szakaszokon sötét üveg, világos felirattal */
 .fej{transition:background .6s var(--sima),box-shadow .6s var(--sima)}
 .fej nav a{transition:color .6s var(--sima)}
+html.ej-fej,html.ej-fej body{background-color:var(--ej)}   /* a sötét szakaszokon az oldal (és így a sáv alatti rész) is sötét */
 html.ej-fej .fej{--logo-lila:#ECE6EF;background:rgba(42,36,56,.6);box-shadow:inset 0 0 0 1px rgba(217,182,106,.24),0 14px 40px -22px rgba(0,0,0,.7)}
 html.ej-fej .fej nav a{color:var(--hold2)}
 html.ej-fej .fej nav a:hover,html.ej-fej .fej nav a.itt{color:var(--hold)}
@@ -370,7 +371,7 @@ html.ej-fej .fej nav a:hover,html.ej-fej .fej nav a.itt{color:var(--hold)}
 .zaro em{font-style:normal;color:var(--rozsa-ej)}
 
 /* ============ verzio3: a második kis ajtó a hajnalra nyílik, és a fény átvezet a Rólamba ============ */
-.hajnal{position:relative;height:340svh}
+.hajnal{position:relative;height:340svh;background:var(--ej)}
 .hajnal .sz{position:sticky;top:0;height:100vh;height:100lvh;overflow:hidden;background:var(--ej)}
 .h-feny{position:absolute;left:50%;border-radius:50%;pointer-events:none;background:radial-gradient(closest-side,rgba(242,200,176,.13),rgba(242,200,176,.04) 55%,rgba(242,200,176,0));transform:translate(-50%,-50%)}
 .h-ajto{position:absolute;inset:0}
@@ -484,7 +485,7 @@ html.valt body::after{content:"";position:fixed;inset:0;z-index:999;background:#
   /* jelképek: mindegyik egy teljes képernyős jelenet (JS: .jel-szin): a kép, rá görgetésre az elmosott, sötétített mása, és a szöveg */
   .jelek{margin-top:80px;gap:0}
   .jel-kep{display:none}
-  .jel{display:block;position:relative;min-height:0;height:210svh;padding:0;border:0!important;margin:0 calc(var(--pad) * -1)}
+  .jel{display:block;position:relative;min-height:0;height:250svh;background:var(--ej);padding:0;border:0!important;margin:0 calc(var(--pad) * -1)}
   .jel-szin{position:sticky;top:0;height:100vh;height:100lvh;overflow:hidden;background:var(--ej2)}
   .jel-szin img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
   .jel-szin .elmos{opacity:0}
@@ -992,7 +993,7 @@ function kockaRajz(m) {
 }
 /* ---------- simított görgetés ---------- */
 let SMY = scrollY, utolsoT = performance.now();
-const SIMITAS = matchMedia('(hover: none)').matches ? .34 : .14;
+const SIMITAS = matchMedia('(hover: none)').matches ? .1 : .14;
 function simit(now) {
   const t = scrollY, dt = Math.min(64, now - utolsoT); utolsoT = now;
   if (csokk || Math.abs(t - SMY) > H * 1.5) SMY = t;
@@ -1222,7 +1223,7 @@ function jelFrissit() {
 /* ---------- verzio3 · az ajtó túloldala: a kis boltív a sötétben kitágul a teljes képre, a hajnal fénye kitölti, ott a válasz ---------- */
 const hajnal = $('#hajnal'), hAjto = $('.h-ajto', hajnal), hImg = $('.h-ajto img', hajnal), hVonal = $('.h-vonal path', hajnal),
   hFeny = $('.h-feny', hajnal), hKerdes = $('.h-kerdes', hajnal), hK = $$('.h-kerdes .sor>span', hajnal), hV = $$('.h-valasz .sor>span', hajnal), hKrem = $('.h-krem', hajnal);
-const HJ = { t: 0, fut: 1, v: -1 };
+const HJ = { t: 0, fut: 1, v: -1 }, hSzin = $('.sz', hajnal);
 function hajnalMer() {
   HJ.sh = $('.sz', hajnal).offsetHeight || H;
   HJ.t = teto(hajnal); HJ.fut = hajnal.offsetHeight - HJ.sh; HJ.v = -1;
@@ -1237,7 +1238,16 @@ const maszkBe = (e, q) => { e.style.transform = `translateY(${((1 - q) * 145).to
 function hajnalFrissit() {
   if (!HJ.w0) return;   // még nincs megmérve
   if (SMY < HJ.t - H * 1.2 || SMY > HJ.t + HJ.fut + H) return;
-  const v = Math.round(kl((SMY - HJ.t) / HJ.fut) * 3000) / 3000; if (v === HJ.v) return; HJ.v = v;
+  const v = Math.round(kl((SMY - HJ.t) / HJ.fut) * 3000) / 3000;
+  const sh = hSzin.clientHeight || H;                      // a színpad mostani magassága (iOS-en az eszköztárral változhat)
+  if (v === HJ.v && sh === HJ.sh) return; HJ.v = v;
+  if (sh !== HJ.sh) {
+    HJ.sh = sh;
+    hImg.style.transformOrigin = `50% ${(HJ.cy / HJ.sh * 100).toFixed(1)}%`;
+    hKerdes.style.bottom = (HJ.sh - (HJ.cy - HJ.h0 / 2) + Math.max(36, H * .06)) + 'px';
+  }
+  // a szakasz háttere a sáv alatt: amíg a kép sötét, sötét; ha a hajnal fénye kitöltötte, krém
+  hajnal.style.backgroundColor = v > .72 ? 'var(--krem)' : '';
   // a kérdés a kis ajtó fölött, aztán felszáll
   const ki = ss(.2, .32, v);
   hK.forEach((e, i) => maszkBe(e, sss(.0 + i * .03, .1 + i * .03, v)));
