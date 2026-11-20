@@ -320,6 +320,38 @@ html.megerkezett .kopgy i:nth-child(2){animation-delay:.28s}html.megerkezett .ko
 .lab .jobb{text-align:right}
 .lab nav{display:flex;gap:22px;justify-content:flex-end;margin-bottom:8px}
 
+/* süti-értesítő: jobb alul (balra a sötét jelenetek feliratai ülnek); a sötét szakaszokon sötét üveg, mint a fejléc.
+   A menü (z 59) és a fejléc (z 60) fölötte marad */
+.suti{position:fixed;right:24px;bottom:24px;z-index:58;width:min(372px,calc(100vw - 32px));padding:24px 26px 22px;border-radius:22px;
+  background:var(--krem);color:var(--szilva);   /* tömör, elmosás nélkül: a rögzített elmosás iPhone-on minden görgetési kockánál újraszámolódna */
+  box-shadow:inset 0 0 0 1px rgba(201,162,78,.3),0 26px 60px -30px rgba(58,35,64,.5);
+  opacity:0;visibility:hidden;transform:translateY(22px);
+  transition:opacity .7s var(--sima),transform 1s var(--gorbe),visibility 0s 1s,background-color .6s var(--sima),color .6s var(--sima),box-shadow .6s var(--sima)}
+.suti.be{opacity:1;visibility:visible;transform:none;transition-delay:0s}
+.suti .cimke{font-size:10.5px;margin-bottom:14px;transition:color .6s var(--sima)}
+.suti h2{font:400 25px/1.18 var(--cim);letter-spacing:-.005em;margin-bottom:10px}
+.suti h2 em{font-style:normal;color:var(--rozsa);transition:color .6s var(--sima)}
+.suti p{font-size:14.5px;line-height:1.62;color:var(--szilva2);transition:color .6s var(--sima)}
+.suti .gombok{display:flex;align-items:center;gap:22px;margin-top:18px}
+.suti .ok{height:42px;padding:0 26px;border-radius:999px;background:var(--szilva);color:var(--krem);font:500 12.5px/1 var(--szoveg);letter-spacing:.14em;text-transform:uppercase;
+  transition:background-color .35s,color .35s}
+.suti .ok:hover,.suti .ok:focus-visible{background:var(--rozsa2);color:#fff}
+.suti .tovabb{font-size:14px;color:var(--szilva2);transition:color .3s}
+.suti .tovabb:hover{color:var(--szilva)}
+html.ej-fej .suti{background:var(--ej2);color:var(--hold);box-shadow:inset 0 0 0 1px rgba(217,182,106,.28),0 26px 60px -30px rgba(0,0,0,.75)}
+html.ej-fej .suti .cimke{color:var(--arany-ej)}
+html.ej-fej .suti h2 em{color:var(--rozsa-ej)}
+html.ej-fej .suti p,html.ej-fej .suti .tovabb{color:var(--hold2)}
+html.ej-fej .suti .tovabb:hover{color:var(--hold)}
+html.ej-fej .suti .ok{background:var(--hold);color:var(--ej)}
+html.ej-fej .suti .ok:hover,html.ej-fej .suti .ok:focus-visible{background:var(--rozsa-ej);color:var(--ej)}
+@media (max-width:899px){
+  .suti{left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));width:auto;padding:20px 22px 18px;border-radius:20px}
+  .suti h2{font-size:22px}
+  .suti p{font-size:14px}
+}
+@media (prefers-reduced-motion: reduce){ .suti{transform:none} }
+
 
 /* ============ verzio3: a sötét szakaszok közös tintája ============ */
 .ej{background:var(--ej);color:var(--hold)}
@@ -884,7 +916,7 @@ html.valt body::after{content:"";position:fixed;inset:0;z-index:999;background:#
     <span class="logo"><svg class="fel" viewBox="0 0 1626 383" role="img" aria-label="AnDimenzió"><use href="#felirat"/></svg></span>
     <span class="aldas">Áldás a bejövőnek, békesség a kimenőnek.</span>
     <div class="jobb">
-      <nav><a class="ln" href="#rolam" data-ugras="rolam"><i class="pt"></i><span class="sz">Rólam</span></a><a class="ln" href="#segit" data-ugras="segit"><i class="pt"></i><span class="sz">Amiben segíthetek</span></a><a class="ln" href="#top"><i class="pt"></i><span class="sz">Adatvédelem</span></a></nav>
+      <nav><a class="ln" href="#rolam" data-ugras="rolam"><i class="pt"></i><span class="sz">Rólam</span></a><a class="ln" href="#segit" data-ugras="segit"><i class="pt"></i><span class="sz">Amiben segíthetek</span></a><a class="ln" href="adatkezelesi-tajekoztato.html"><i class="pt"></i><span class="sz">Adatvédelem</span></a></nav>
       <span>© 2026 Belső-Gál Andrea · médium · Idézet: Szepes Mária</span>
     </div>
   </footer>
@@ -1500,6 +1532,46 @@ betuk.then(() => {
   requestAnimationFrame(ciklus);
 });
 addEventListener('load', () => mer());
+})();
+</script>
+<script>
+/* süti-értesítő: egyetlen bejegyzést tárol (andi_suti_ertesites), hogy a látogató bezárta; követő süti nincs az oldalon.
+   A töltő után, a hős végén jön fel, így nem takarja a hőst és a görgetett videót */
+(() => {
+  'use strict';
+  const KULCS = 'andi_suti_ertesites', V = '1';
+  try { if (localStorage.getItem(KULCS) === V) return; } catch (e) { /* letiltott tárolás: legközelebb újra feljön */ }
+  const d = document, html = d.documentElement, hos = d.getElementById('hos');
+  const jegyez = () => { try { localStorage.setItem(KULCS, V); } catch (e) {} };
+  let doboz = null, veg = 0;
+  function mutat() {
+    doboz = d.createElement('section');
+    doboz.className = 'suti';
+    doboz.setAttribute('aria-labelledby', 'suti-cim');
+    doboz.innerHTML = '<span class="cimke">Sütik</span>' +
+      '<h2 id="suti-cim">Csak ami <em>szükséges.</em></h2>' +
+      '<p>Ez az oldal nem használ követő, statisztikai vagy hirdetési sütiket. Egyetlen dolgot jegyez meg a böngésződben: hogy ezt az értesítést már láttad.</p>' +
+      '<div class="gombok"><button type="button" class="ok">Rendben</button>' +
+      '<a class="tovabb ln" href="adatkezelesi-tajekoztato.html#sutik"><i class="pt"></i><span class="sz">Adatkezelés</span></a></div>';
+    doboz.querySelector('.ok').addEventListener('click', bezar);
+    doboz.querySelector('.tovabb').addEventListener('click', jegyez);
+    d.body.appendChild(doboz);
+    requestAnimationFrame(() => requestAnimationFrame(() => doboz.classList.add('be')));
+  }
+  function bezar() {
+    jegyez(); doboz.classList.remove('be');
+    setTimeout(() => doboz.remove(), 1000);
+  }
+  const mer = () => { veg = hos ? hos.offsetTop + hos.offsetHeight - innerHeight * .5 : 200; };
+  function nez() {
+    if (doboz || html.classList.contains('tolt') || scrollY < veg) return;
+    removeEventListener('scroll', nez); removeEventListener('resize', mer);
+    mutat();
+  }
+  mer();
+  addEventListener('resize', mer);
+  addEventListener('load', () => { mer(); nez(); });
+  addEventListener('scroll', nez, { passive: true });
 })();
 </script>
 <noscript><style>.tolto{display:none!important}.fej,.hos-also>*,.hos-cim .sor>span,.fej .marka .cs{opacity:1!important}</style></noscript>
